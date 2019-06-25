@@ -5,15 +5,6 @@ module BlackJack
   BANK_SIZE = 100
   BET_SIZE = 10
 
-  JACK = 'J'
-  QUEEN = 'Q'
-  KING = 'K'
-  ACE = 'A'
-  CLUBS = '♣'
-  DIAMONDS = '♦'
-  HEARTS = '♥'
-  SPADES = '♠'
-
   ENTER_YOUR_NAME = 'Enter your name: '
   WANT_EXIT = 'Want to quit?'
   SELECT = 'Select number: '

@@ -4,6 +4,16 @@
 module BlackJack
   # Card
   class Card
+    JACK = 'J'
+    QUEEN = 'Q'
+    KING = 'K'
+    ACE = 'A'
+
+    CLUBS = '♣'
+    DIAMONDS = '♦'
+    HEARTS = '♥'
+    SPADES = '♠'
+
     attr_reader :rank, :suit, :points
 
     def initialize(rank, suit, points)

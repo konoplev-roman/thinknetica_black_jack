@@ -93,7 +93,7 @@ module BlackJack
     private
 
     def hand_has_ace?
-      @hand.any? { |c| c.rank == ACE }
+      @hand.any? { |c| c.rank == Card::ACE }
     end
   end
 end

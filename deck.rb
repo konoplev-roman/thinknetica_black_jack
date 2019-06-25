@@ -5,8 +5,8 @@ module BlackJack
   # Deck
   class Deck
     def initialize
-      ranks = [*(2..10), JACK, QUEEN, KING, ACE]
-      suits = [CLUBS, DIAMONDS, HEARTS, SPADES]
+      ranks = [*(2..10), Card::JACK, Card::QUEEN, Card::KING, Card::ACE]
+      suits = [Card::CLUBS, Card::DIAMONDS, Card::HEARTS, Card::SPADES]
 
       @cards = []
 
@@ -28,7 +28,7 @@ module BlackJack
     def points_by(rank)
       case rank
       when 2..10 then rank
-      when JACK, QUEEN, KING then 10
+      when Card::JACK, Card::QUEEN, Card::KING then 10
       else 11 # ACE
       end
     end
