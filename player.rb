@@ -5,28 +5,19 @@ module BlackJack
   # Player
   class Player
     attr_reader :name, :bank
+    attr_accessor :hand
 
-    def initialize(name)
+    def initialize(name, bank)
       @name = name
 
-      @bank = BANK_SIZE
-    end
-
-    # New hand with two cards
-    def new_hand(cards)
-      @hand = cards
-    end
-
-    # Take cards
-    def take(cards)
-      @hand += cards
+      @bank = bank
     end
 
     # Make a bet
-    def bet
-      @bank -= BET_SIZE
+    def bet(size)
+      @bank -= size
 
-      BET_SIZE
+      size
     end
 
     # Win a bank
@@ -34,29 +25,24 @@ module BlackJack
       @bank += bank
     end
 
-    # The value points of each card:
-    # from two to ten - from 2 to 10, respectively
-    # the ACE - 1 or 11 (11 until the total amount of not more than 21, then 1)
-    # the King, Queen and Jack - 10
-    def points
-      points = @hand.map(&:points).sum
-
-      points -= 10 if hand_has_ace? && points > 21
-
-      points
-    end
-
     def to_s
       "#{@name} ($#{@bank})"
     end
 
-    # Show cards face down
-    def open_print_hand
-      puts "#{self}. #{@hand.join(', ')} - #{points} #{POINTS}"
+    def bankrupt?
+      !@bank.positive?
+    end
+
+    def can_take_cards?
+      @hand.cards.size < 3
+    end
+
+    def cant_take_cards?
+      !can_take_cards?
     end
 
     # Reset the wishes of the player
-    def tern
+    def reset_wishes
       @wants_open_cards = false
       @wants_take_card = false
     end
@@ -75,25 +61,6 @@ module BlackJack
 
     def wants_take_card?
       @wants_take_card
-    end
-
-    def can_take_cards?
-      @hand.size < 3
-    end
-
-    def cant_take_cards?
-      !can_take_cards?
-    end
-
-    # If the player scored more than 21 points
-    def overkill?
-      points > 21
-    end
-
-    private
-
-    def hand_has_ace?
-      @hand.any? { |c| c.rank == Card::ACE }
     end
   end
 end

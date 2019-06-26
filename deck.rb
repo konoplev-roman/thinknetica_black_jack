@@ -19,8 +19,8 @@ module BlackJack
       @cards.shuffle!
     end
 
-    def pull(size = 1)
-      @cards.shift(size)
+    def shift
+      @cards.shift
     end
   end
 end

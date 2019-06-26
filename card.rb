@@ -22,15 +22,17 @@ module BlackJack
     end
 
     def to_s
-      "#{rank}#{suit}"
+      "#{@rank}#{@suit}"
     end
 
     def points
-      case rank
-      when 2..10 then rank
+      # @formatter:off
+      case @rank
+      when 2..10 then @rank
       when Card::JACK, Card::QUEEN, Card::KING then 10
       else 11 # ACE
       end
+      # @formatter:on
     end
   end
 end
