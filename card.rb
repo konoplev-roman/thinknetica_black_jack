@@ -14,21 +14,18 @@ module BlackJack
     HEARTS = '♥'
     SPADES = '♠'
 
-    attr_reader :rank, :suit, :points
+    attr_reader :rank, :suit
 
     def initialize(rank, suit)
       @rank = rank
       @suit = suit
-      @points = points_by(rank)
     end
 
     def to_s
       "#{rank}#{suit}"
     end
 
-    private
-
-    def points_by(rank)
+    def points
       case rank
       when 2..10 then rank
       when Card::JACK, Card::QUEEN, Card::KING then 10
