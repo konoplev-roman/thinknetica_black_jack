@@ -5,13 +5,10 @@ module BlackJack
   # Deck
   class Deck
     def initialize
-      ranks = [*(2..10), Card::JACK, Card::QUEEN, Card::KING, Card::ACE]
-      suits = [Card::CLUBS, Card::DIAMONDS, Card::HEARTS, Card::SPADES]
-
       @cards = []
 
-      ranks.each do |rank|
-        suits.each do |suit|
+      Card::RANKS.each do |rank|
+        Card::SUITS.each do |suit|
           @cards.push(Card.new(rank, suit))
         end
       end

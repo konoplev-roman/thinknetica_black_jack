@@ -14,6 +14,9 @@ module BlackJack
     HEARTS = '♥'
     SPADES = '♠'
 
+    RANKS = [*(2..10), JACK, QUEEN, KING, ACE].freeze
+    SUITS = [CLUBS, DIAMONDS, HEARTS, SPADES].freeze
+
     attr_reader :rank, :suit
 
     def initialize(rank, suit)
@@ -29,7 +32,7 @@ module BlackJack
       # @formatter:off
       case @rank
       when 2..10 then @rank
-      when Card::JACK, Card::QUEEN, Card::KING then 10
+      when JACK, QUEEN, KING then 10
       else 11 # ACE
       end
       # @formatter:on
